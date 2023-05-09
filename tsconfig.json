@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // or ESNext 用于指定TS编译后的JS版本
+    "useDefineForClassFields": true,  // 将class声明中的字段语义从[[set]]变更到[[Define]]
+    "module": "ESNext", // 指定模块化方案
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+    "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查
+    // "types": ["vite/client"],  //要包含的类型声明文件名列表
+
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,  //允许导入扩展名为“.json”的模块
+    "isolatedModules": true,  //确保每个文件都可以在不依赖其他导入的情况下安全地进行传输
+    "noEmit": true, // 不输出文件,即编译后不会生成任何js文件
+    "jsx": "preserve",  //在 `.tsx`文件里支持JSX： `"React"`或 `"Preserve"`
+    "sourceMap": false, // 生成目标文件的sourceMap文件
+
+    /* Linting */
+    "strict": true, //开启所有的严格检查
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] //解决引入报错  找不到模块“@/xxxx” 或其相应的类型声明
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", "dist", "vite.config.ts"],
+
+}
